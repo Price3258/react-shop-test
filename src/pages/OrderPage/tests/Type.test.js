@@ -14,19 +14,19 @@ test('display product images from server', async ()=> {
     expect(altText).toEqual(['America product','England product'])
 })
 
-// test('fetch option information from server', async ()=> {
-//     render(<Type orderType="options" /> );
-//     const optionCheckBoxses = await screen.findAllByRole("checkbox");
-//     expect(optionCheckBoxses).toHaveLength(2);
-// });
-
 test('when fetching product data, face error', async  ()=> {
     server.resetHandlers(
-        rest.get('http://localhost:5000/products', (req,res,ctx) => {
+        rest.get('http://localhost:5011/products', (req,res,ctx) => {
         return res (ctx.status(500));
     })
     );
     render(<Type orderType="products" /> );
     const errorBanner = await screen.findByTestId("error-banner");
     expect(errorBanner).toHaveTextContent("에러가 발생했습니다.");
+});
+
+test('fetch option information from server', async () => {
+    render(<Type orderType="options" /> );
+    const optionCheckBoxes = await screen.findAllByRole("checkbox");
+    expect(optionCheckBoxes).toHaveLength(2);
 });

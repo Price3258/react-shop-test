@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const Products = ({
   name, imagePath
@@ -12,7 +11,7 @@ const Products = ({
     >
       <img
         style={{width:'75%'}}
-        src={`http://localhost:5000/${imagePath}`}
+        src={`http://localhost:5011/${imagePath}`}
         alt={`${name} product`}
       />
       <form>
