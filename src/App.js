@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css';
+import { OrderContextProvider } from './contexts/OrderContext';
 import OrderPage from './pages/OrderPage/OrderPage';
 
 const App = () => {
@@ -9,7 +10,9 @@ const App = () => {
         padding: "4rem"
       }}
     >
-      <OrderPage />
+      <OrderContextProvider>
+        <OrderPage />
+      </OrderContextProvider>
     </div>
   )
 }
